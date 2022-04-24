@@ -12,7 +12,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { DebounceWatch } from '../DebounceWatch'
-import { Pooling } from '../Pooling'
+import { Polling } from '../Polling'
 
 const source = ['test', 'test1', 'test2']
 
@@ -29,9 +29,9 @@ export default class DecoratorSample extends Vue {
     this.textLs = source.filter((item) => item.indexOf(this.searchWord) >= 0)
   }
 
-  @Pooling()
+  @Polling({ intervalMs: 5000 })
   test() {
-    console.log('Pooling called')
+    console.log('Polling called')
     this.counter += 1
     source.push(`test${this.counter}`)
     this.textLs = source.concat([])
